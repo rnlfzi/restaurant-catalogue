@@ -1,17 +1,21 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import Card from './style/Card';
+import Container from './style/Container';
+import Image from './style/Image';
+
  
 function RestaurantItem({ id, pictureId, name, description }) {
   return (
-    <div className="card">
-      <img src={`https://restaurant-api.dicoding.dev/images/small/${pictureId}`} alt={name} />
+    <Card>
+      <Image height="250px" src={`https://restaurant-api.dicoding.dev/images/small/${pictureId}`} alt={name} />
  
-      <div className="container">
+      <Container>
         <h2><Link href={`/detail/${id}`}>{name}</Link></h2>
-        <p>{description}</p>
+        <p>{description.slice(0, 300) + (description.length > 300 ? '...' : '')}</p>
         <br />
-      </div>
-    </div>
+      </Container>
+    </Card>
   );
 }
  
